@@ -1,0 +1,15 @@
+/home/phanipriya/Desktop/EventBooking/API/EventHub.Infrastructure/bin/Debug/net10.0/EventHub.Infrastructure.deps.json
+/home/phanipriya/Desktop/EventBooking/API/EventHub.Infrastructure/bin/Debug/net10.0/EventHub.Infrastructure.runtimeconfig.json
+/home/phanipriya/Desktop/EventBooking/API/EventHub.Infrastructure/bin/Debug/net10.0/EventHub.Infrastructure.dll
+/home/phanipriya/Desktop/EventBooking/API/EventHub.Infrastructure/bin/Debug/net10.0/EventHub.Infrastructure.pdb
+/home/phanipriya/Desktop/EventBooking/API/EventHub.Infrastructure/obj/Debug/net10.0/EventHub.Infrastructure.csproj.AssemblyReference.cache
+/home/phanipriya/Desktop/EventBooking/API/EventHub.Infrastructure/obj/Debug/net10.0/EventHub.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+/home/phanipriya/Desktop/EventBooking/API/EventHub.Infrastructure/obj/Debug/net10.0/EventHub.Infrastructure.AssemblyInfoInputs.cache
+/home/phanipriya/Desktop/EventBooking/API/EventHub.Infrastructure/obj/Debug/net10.0/EventHub.Infrastructure.AssemblyInfo.cs
+/home/phanipriya/Desktop/EventBooking/API/EventHub.Infrastructure/obj/Debug/net10.0/EventHub.Infrastructure.csproj.CoreCompileInputs.cache
+/home/phanipriya/Desktop/EventBooking/API/EventHub.Infrastructure/obj/Debug/net10.0/EventHub.Infrastructure.sourcelink.json
+/home/phanipriya/Desktop/EventBooking/API/EventHub.Infrastructure/obj/Debug/net10.0/EventHub.Infrastructure.dll
+/home/phanipriya/Desktop/EventBooking/API/EventHub.Infrastructure/obj/Debug/net10.0/refint/EventHub.Infrastructure.dll
+/home/phanipriya/Desktop/EventBooking/API/EventHub.Infrastructure/obj/Debug/net10.0/EventHub.Infrastructure.pdb
+/home/phanipriya/Desktop/EventBooking/API/EventHub.Infrastructure/obj/Debug/net10.0/EventHub.Infrastructure.genruntimeconfig.cache
+/home/phanipriya/Desktop/EventBooking/API/EventHub.Infrastructure/obj/Debug/net10.0/ref/EventHub.Infrastructure.dll

@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "TqqPwsweXnU=",
+  "dgSpecHash": "A3iX2cVAMkg=",
   "success": true,
   "projectFilePath": "/home/phanipriya/Desktop/EventBooking/API/EventHub.Application/EventHub.Application.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/home/phanipriya/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/10.0.12/microsoft.extensions.dependencyinjection.abstractions.10.0.12.nupkg.sha512"
+  ],
   "logs": []
 }

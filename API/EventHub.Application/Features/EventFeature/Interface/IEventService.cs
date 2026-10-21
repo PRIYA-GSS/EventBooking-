@@ -27,4 +27,7 @@ public interface IEventService
 
     Task<PagedResult<EventCardDto>> GetUpcomingEventsAsync(
     EventSearchDto dto);
+
+    Task<EventDetailsDto?> GetEventDetailsAsync(
+    Guid eventId);
 }

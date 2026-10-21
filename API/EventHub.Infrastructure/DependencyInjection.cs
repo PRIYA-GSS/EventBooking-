@@ -28,6 +28,7 @@ public static class DependencyInjection
     );
      services.AddAutoMapper(typeof(IdentityMapping));
      services.AddAutoMapper(typeof(VenueMapping));
+     services.AddAutoMapper(typeof(EventMapper));
         return services;
     }
 }

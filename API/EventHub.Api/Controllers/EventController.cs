@@ -13,14 +13,14 @@ public class EventController : ControllerBase
     private readonly EventsHandler _handler;
     public EventController(EventsHandler handler)
     {
-        _handler=handler;
+        _handler = handler;
     }
     [HttpPost]
     public async Task<IActionResult> CreateEvent(CreateEventCommand command)
     {
-        var result= await _handler.Handle(command);
-        if(!result.IsSuccess)
-        return BadRequest(result);
+        var result = await _handler.Handle(command);
+        if (!result.IsSuccess)
+            return BadRequest(result);
 
         return Ok(result);
     }
@@ -110,7 +110,25 @@ public class EventController : ControllerBase
 
         return Ok(result);
     }
+    [HttpGet]
+    public async Task<IActionResult> GetEvents(GetUpcomingEventsQuery query)
+    {
+        var result = await _handler.Handle(query);
 
+        return Ok(result);
+    }
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetEventDetails(
+    GetEventDetailsQuery query)
+    {
+        var result =
+            await _handler.Handle(query);
+
+        if (result == null)
+            return NotFound();
+
+        return Ok(result);
+    }
 
 
 }

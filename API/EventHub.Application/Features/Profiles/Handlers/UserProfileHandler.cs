@@ -1,8 +1,8 @@
 
 using EventHub.Application.Common.Models;
-using EventHub.Application.Features.Profile.Commands;
+using EventHub.Application.Features.Profiles.Commands;
  using EventHub.Application.Common.Interfaces;
-using EventHub.Application.Features.Profile.DTOs;
+using EventHub.Application.Features.Profiles.DTOs;
 namespace EventHub.Profile.Features.Authentication.Handlers;
 
 public class UserProfileHandler

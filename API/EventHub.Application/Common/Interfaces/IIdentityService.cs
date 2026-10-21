@@ -1,6 +1,6 @@
 using EventHub.Application.Common.Models;
 using EventHub.Application.Features.Authentication.DTOs;
-using EventHub.Application.Features.Profile.DTOs;
+using EventHub.Application.Features.Profiles.DTOs;
 namespace EventHub.Application.Common.Interfaces;
 
 public interface IIdentityService

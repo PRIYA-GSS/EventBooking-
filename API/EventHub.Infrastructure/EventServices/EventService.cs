@@ -126,6 +126,14 @@ public class EventService : IEventService
         if (eventEntity.Status == EventStatus.Published)
             return new Result { IsSuccess = false, Message = "Event already published" };
         var venue = await _context.Venues.Include(x => x.Sections).ThenInclude(x => x.Seats).FirstOrDefaultAsync(x => x.Id == eventEntity.VenueId);
+        if (venue == null)
+        {
+            return new Result
+            {
+                IsSuccess = false,
+                Message = "Venue not found"
+            };
+        }
         var categoryPrices = await _context.EventPrice.Where(x => x.EventId == eventId).Select(x => new CategoryPriceDto { Category = x.Category, Price = x.Price }).ToListAsync();
         var categories = venue.Sections.Select(x => x.Category).ToList();
 
@@ -180,7 +188,7 @@ public class EventService : IEventService
     string organizerId)
     {
         var result = new Result();
-        if (dto.StartTime < DateTime.UtcNow || dto.EndTime < dto.StartTime)
+        if (dto.StartTime <= DateTime.UtcNow || dto.EndTime < dto.StartTime)
         {
             result.IsSuccess = false;
             result.Message = "Invalid start and end time";
@@ -222,6 +230,14 @@ public class EventService : IEventService
     string organizerId)
     {
         var eventEntity = await _context.Events.FirstOrDefaultAsync(x => x.Id == eventId && x.OrganizerId == organizerId);
+        if (eventEntity == null)
+        {
+            return new Result
+            {
+                IsSuccess = false,
+                Message = "Event not found"
+            };
+        }
         if (eventEntity.StartTime <= DateTime.UtcNow)
         {
             return new Result { IsSuccess = false, Message = "Already started cannot be cancel" };
@@ -243,7 +259,7 @@ public class EventService : IEventService
         {
             return new Result { IsSuccess = false, Message = "Event not found" };
         }
-        var seats = await _context.EventSeats.Where(x => dto.EventSeatIds.Contains(x.Id)).ToListAsync();
+        var seats = await _context.EventSeats.Where(x => x.EventId == dto.EventId && dto.EventSeatIds.Contains(x.Id)).ToListAsync();
         if (seats.Any(x => x.Status != SeatStatus.Available))
         {
             return new Result { IsSuccess = false, Message = "Only available seats can be blocked" };
@@ -303,7 +319,7 @@ public class EventService : IEventService
                         StartTime = x.StartTime,
                         VenueName = x.Venue.Name,
                         City = x.Venue.City,
-                        StartingPrice = _context.EventPrice.Where(p => p.EventId == x.Id).Min(p => p.Price),
+                        StartingPrice = _context.EventPrice.Where(p => p.EventId == x.Id).Select(p => (decimal?)p.Price).Min() ?? 0,
                         IsSoldOut = !_context.EventSeats.Any(s => s.EventId == x.Id && s.Status == SeatStatus.Available)
                     }).ToListAsync();
 
@@ -313,6 +329,42 @@ public class EventService : IEventService
             TotalRecords = totalRecords,
             Page = dto.Page,
             PageSize = dto.PageSize
+        };
+    }
+    public async Task<EventDetailsDto?> GetEventDetailsAsync(
+    Guid eventId)
+    {
+        var eventEntity = await _context.Events
+            .Include(x => x.Venue)
+            .FirstOrDefaultAsync(x =>
+                x.Id == eventId &&
+                x.Status == EventStatus.Published);
+
+        if (eventEntity == null)
+        {
+            return null;
+        }
+        var prices = await _context.EventPrice.Where(x => x.EventId == eventEntity.Id).Select(x => new CategoryPriceDto { Category = x.Category, Price = x.Price }).ToListAsync();
+
+        var seatsRemaining = await _context.EventSeats
+                                        .Where(x => x.EventId == eventEntity.Id && x.Status == SeatStatus.Available)
+                                        .GroupBy(x => x.Seat.Section.Category)
+                                        .Select(x => new CategorySeatAvailabilityDto { Category = x.Key, RemainingSeats = x.Count() })
+                                        .ToListAsync();
+        return new EventDetailsDto
+        {
+            Id = eventEntity.Id,
+            Title = eventEntity.Title,
+            Description = eventEntity.Description,
+
+            VenueName = eventEntity.Venue.Name,
+            City = eventEntity.Venue.City,
+
+            StartTime = eventEntity.StartTime,
+            EndTime = eventEntity.EndTime,
+
+            Prices = prices,
+            SeatsRemaining = seatsRemaining
         };
     }
     private bool AllCategoriesPriced(List<SeatCategory> categories, List<CategoryPriceDto> prices)

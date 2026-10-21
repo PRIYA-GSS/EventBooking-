@@ -7,6 +7,7 @@ public class EventSeat
     public Guid EventId { get; set; }
 
     public Guid SeatId { get; set; }
+    public Seat Seat {get;set;}
 
     public SeatStatus Status { get; set; }
 }

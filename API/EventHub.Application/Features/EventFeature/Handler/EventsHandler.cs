@@ -77,5 +77,10 @@ public class EventsHandler
         return await _service.GetUpcomingEventsAsync(
             query.Dto);
     }
+    public async Task<EventDetailsDto?> Handle(GetEventDetailsQuery query)
+    {
+        return await _service.GetEventDetailsAsync(
+            query.EventId);
+    }
 
 }

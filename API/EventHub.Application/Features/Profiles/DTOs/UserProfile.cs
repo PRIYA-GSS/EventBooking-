@@ -1,4 +1,4 @@
-namespace EventHub.Application.Features.Profile.DTOs;
+namespace EventHub.Application.Features.Profiles.DTOs;
 public class UserProfile
 {
     public string FirstName { get; set; } = string.Empty;

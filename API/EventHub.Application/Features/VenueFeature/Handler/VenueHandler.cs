@@ -1,11 +1,9 @@
 using EventHub.Application.Common.Models;
-using EventHub.Application.Features.Profile.Commands;
-using EventHub.Application.Common.Interfaces;
 using EventHub.Application.Features.VenueFeature.DTOs;
 using EventHub.Application.Features.VenueFeature.Commands;
 using EventHub.Application.Features.VenueFeature.Interface;
 using entity = EventHub.Domain.Entities;
-namespace EventHub.Profile.Features.VenueFeature.Handlers;
+namespace EventHub.Profiles.Features.VenueFeature.Handlers;
 
 public class VenueHandler
 {

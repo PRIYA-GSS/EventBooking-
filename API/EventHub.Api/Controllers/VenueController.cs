@@ -1,12 +1,5 @@
-using EventHub.Application.Common.Models;
-using EventHub.Application.Features.Authentication.Commands;
-using EventHub.Application.Features.Authentication.DTOs;
-using EventHub.Application.Features.Authentication.Handlers;
-using EventHub.Application.Features.Profile.Commands;
-using EventHub.Application.Features.Profile.DTOs;
 using EventHub.Application.Features.VenueFeature.Commands;
-using EventHub.Profile.Features.Authentication.Handlers;
-using EventHub.Profile.Features.VenueFeature.Handlers;
+using EventHub.Profiles.Features.VenueFeature.Handlers;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EventHub.Api.Controllers;

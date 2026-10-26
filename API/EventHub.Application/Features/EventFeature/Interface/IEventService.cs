@@ -30,4 +30,8 @@ public interface IEventService
 
     Task<EventDetailsDto?> GetEventDetailsAsync(
     Guid eventId);
+    Task<List<SeatMapDto>> GetSeatMapAsync(Guid eventId);
+    Task<Result<HoldSeatsResultDto>> HoldSeatsAsync(
+    HoldSeatsDto dto,
+    string customerId);
 }

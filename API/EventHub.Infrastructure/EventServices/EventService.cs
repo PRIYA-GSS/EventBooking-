@@ -367,6 +367,25 @@ public class EventService : IEventService
             SeatsRemaining = seatsRemaining
         };
     }
+    public async Task<List<SeatMapDto>> GetSeatMapAsync(Guid eventId)
+    {
+        return await _context.EventSeats
+            .Where(x => x.EventId == eventId)
+            .Select(x => new SeatMapDto
+            {
+                EventSeatId = x.Id,
+                Label = x.Seat.Label,
+                GridX = x.Seat.GridX,
+                GridY = x.Seat.GridY,
+                Category = x.Seat.Section.Category,
+                Status = x.Status
+            })
+            .ToListAsync();
+    }
+    public async Task<Result<HoldSeatsResultDto>> HoldSeatsAsync(HoldSeatsDto dto, string customerId)
+    {
+        
+    }
     private bool AllCategoriesPriced(List<SeatCategory> categories, List<CategoryPriceDto> prices)
     {
 
@@ -375,4 +394,5 @@ public class EventService : IEventService
                 price.Category == category &&
                 price.Price > 0));
     }
+
 }

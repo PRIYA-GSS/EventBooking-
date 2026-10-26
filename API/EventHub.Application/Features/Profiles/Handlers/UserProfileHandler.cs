@@ -3,7 +3,7 @@ using EventHub.Application.Common.Models;
 using EventHub.Application.Features.Profiles.Commands;
  using EventHub.Application.Common.Interfaces;
 using EventHub.Application.Features.Profiles.DTOs;
-namespace EventHub.Profile.Features.Authentication.Handlers;
+namespace EventHub.Profiles.Features.Authentication.Handlers;
 
 public class UserProfileHandler
 {

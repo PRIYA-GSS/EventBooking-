@@ -2,7 +2,7 @@ using dto=EventHub.Application.Features.EventFeature.DTOs;
 using entity=EventHub.Domain.Entities;
 using AutoMapper;
 
-namespace EventHub.Infrastructure.EventMapper;
+namespace EventHub.Infrastructure.EventServices;
 
 public class EventMapping : Profile
 {

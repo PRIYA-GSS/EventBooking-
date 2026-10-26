@@ -2,7 +2,7 @@ namespace EventHub.Domain.Enums;
 public enum SeatStatus
 {
     Available,
-    Reserved,
+    Held,
     Booked,
     Blocked
 }

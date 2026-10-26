@@ -82,5 +82,16 @@ public class EventsHandler
         return await _service.GetEventDetailsAsync(
             query.EventId);
     }
+    public async Task<List<SeatMapDto>> Handle(GetSeatMapQuery query)
+    {
+        return await _service.GetSeatMapAsync(
+            query.EventId);
+    }
+    public async Task<Result<HoldSeatsResultDto>> Handle(HoldSeatsCommand command)
+    {
+        return await _service.HoldSeatsAsync(
+            command.Dto,
+            command.CustomerId);
+    }
 
 }
